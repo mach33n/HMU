@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1057743937941-tcemcdb7hkugr33bti5ip3ejnnrnb2r5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1057743937941-tcemcdb7hkugr33bti5ip3ejnnrnb2r5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCBmcH9y5wb8hX5THAh7WU_cy0VYPwGmsk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1057743937941</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Cam.HMU</string>
+	<key>PROJECT_ID</key>
+	<string>hmup-7c5c9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hmup-7c5c9.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1057743937941:ios:9b582abbf3081d71c9969c</string>
+	<key>DATABASE_URL</key>
+	<string>https://hmup-7c5c9.firebaseio.com</string>
+</dict>
+</plist>

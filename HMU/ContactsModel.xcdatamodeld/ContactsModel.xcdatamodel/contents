@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ContactObj" representedClassName="ContactObj" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="contact" attributeType="Transformable"/>
+        <attribute name="emailAddress" optional="YES" attributeType="String"/>
+        <attribute name="familyName" optional="YES" attributeType="String"/>
+        <attribute name="givenName" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="lastContact" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="TransformableContactContainer" representedClassName=".TransformableContactContainer" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="transformableContact" attributeType="Transformable"/>
+    </entity>
+    <elements>
+        <element name="ContactObj" positionX="1075.5" positionY="1911.08203125" width="111.77734375" height="193"/>
+        <element name="TransformableContactContainer" positionX="1071" positionY="1989" width="128" height="73"/>
+    </elements>
+</model>
