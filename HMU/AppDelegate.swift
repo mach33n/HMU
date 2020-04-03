@@ -17,17 +17,24 @@ import Messages
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
-  //Delegate to handle notification responses
-  let notificationDelegate = HMUResponseNotificationDelegate()
+  
+  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    //unfinished
+  }
+  
+  func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    //unfinished
+  }
+  
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    //unfinished
+  }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     FirebaseApp.configure()
-
-    self.configureNotification()
-
-    UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+    contactAPI.shared.configureNotification()
+   UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
 
     // Override point for customization after application launch.
     UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 0 / 255, blue: 205 / 255, alpha: 1)
@@ -40,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-    ContactList.pullContact { _ in
-      completionHandler(.noData)
+    contactAPI.shared.pullContact { (success) in
+      print(success)
     }
   }
 
@@ -63,86 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    self.saveContext()
-  }
-
-  func configureNotification() {
-    // Not positive if this is the most effective way to register but may not be important.
-    if #available(iOS 10.0, *) {
-      let center = UNUserNotificationCenter.current()
-      center.requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in }
-      center.delegate = notificationDelegate
-    } else {
-      UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-    }
-    setUpNotifActions()
-    UIApplication.shared.registerForRemoteNotifications()
-  }
-
-  private func setUpNotifActions() {
-    // Define the custom actions.
-    let acceptAction = UNNotificationAction(identifier: "ACCEPT_ACTION",
-                                            title: "Say Hello", options: .foreground)
-    let declineAction = UNNotificationAction(identifier: "DECLINE_ACTION",
-                                             title: "Not this moment")
-    let deleteAction = UNNotificationAction(identifier: "DELETE_ACTION",
-                                            title: "Delete Contact", options: [.destructive, .authenticationRequired])
-
-    // Define the notification type
-    let meetingInviteCategory =
-      UNNotificationCategory(identifier: "NotifResponse",
-                             actions: [acceptAction, declineAction, deleteAction],
-                             intentIdentifiers: [],
-                             hiddenPreviewsBodyPlaceholder: "",
-                             options: .customDismissAction)
-
-    // Register the notification type.
-    let notificationCenter = UNUserNotificationCenter.current()
-    notificationCenter.setNotificationCategories([meetingInviteCategory])
-  }
-
-  // MARK: - Core Data stack
-
-  lazy var persistentContainer: NSPersistentContainer = {
-    /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
-    let container = NSPersistentContainer(name: "ContactsModel")
-    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-      if let error = error as NSError? {
-        // Replace this implementation with code to handle the error appropriately.
-        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-        /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
-    })
-    return container
-  }()
-
-  // MARK: - Core Data Saving support
-
-  func saveContext () {
-    let context = persistentContainer.viewContext
-    if context.hasChanges {
-      do {
-        try context.save()
-      } catch {
-        // Replace this implementation with code to handle the error appropriately.
-        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        let nserror = error as NSError
-        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-      }
-    }
+    contactAPI.shared.saveContext()
   }
 }

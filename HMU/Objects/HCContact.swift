@@ -83,5 +83,4 @@ class HCContact: NSObject, NSCoding {
   func isEqual(object: HCContact?) -> Bool {
     return identifier == object?.identifier
   }
-
 }

@@ -9,25 +9,41 @@
 import XCTest
 
 class HMUUITests: XCTestCase {
+  
+  var app: XCUIApplication!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
+      continueAfterFailure = false
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+      app = XCUIApplication()
+      app.isAccessibilityElement = false
+
+        // reset state
+      let defaultsName = Bundle.main.bundleIdentifier!
+      UserDefaults.standard.removePersistentDomain(forName: defaultsName)
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testLogin() {
+      app.launch()
+      
+      XCTAssertTrue(app.buttons["LOG IN"].exists)
+      
+      app.otherElements["InputView"].textFields["logInInput"].tap()
+      app.otherElements["InputView"].textFields["logInInput"].typeText("Here")
+      app.otherElements["PassINPUT"].secureTextFields["logInInput"].tap()
+      app.otherElements["PassINPUT"].secureTextFields["logInInput"].typeText("HereHere")
 
+      app.buttons["LOG IN"].tap()
+      sleep(5)
+      XCTAssertFalse(app.buttons["LOG IN"].exists)
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -39,5 +55,10 @@ class HMUUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+}
+extension XCUIApplication {
+    var isDisplayingLogin: Bool {
+      return otherElements["logo"].exists
     }
 }

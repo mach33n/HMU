@@ -19,47 +19,9 @@ class HMUTests: XCTestCase {
   //Not sure what this is for
   var saveNotificationCompleteHandler: ((Notification)->())?
   
-  //Mock container for Core Data Testing
-  lazy var contactStoreModel: NSManagedObjectModel = {
-    //Make a model similar to the one I use for my existing Contact List
-    let contactStoreModel = NSManagedObjectModel()
-    
-    // Create the entity
-    let entity = NSEntityDescription()
-    entity.name = "TransformableContactContainer"
-    
-    //Create the two properties as attributes
-    var properties = Array<NSAttributeDescription>()
-    
-    let identifierAttribute = NSAttributeDescription()
-    identifierAttribute.name = "identifier"
-    identifierAttribute.attributeType = .stringAttributeType
-    identifierAttribute.isOptional = false
-    
-    //not sure what this means
-    identifierAttribute.isIndexedBySpotlight = true
-    properties.append(identifierAttribute)
-    
-    let transformableContact = NSAttributeDescription()
-    transformableContact.name = "transformableContact"
-    transformableContact.attributeType = .transformableAttributeType
-    transformableContact.isOptional = false
-    transformableContact.isIndexedBySpotlight = true
-    
-    properties.append(transformableContact)
-    
-    entity.properties = properties
-    
-    contactStoreModel.entities = [entity]
-    
-    print("Entities: ")
-    print(contactStoreModel.entities)
-    return contactStoreModel
-  }()
-  
   lazy var mockContactStoreContainer: NSPersistentContainer = {
     //Create a persistent mock container for test purposes
-    let container = NSPersistentContainer(name: "TransformableContactContainer", managedObjectModel: self.contactStoreModel)
+    let container = NSPersistentContainer(name: "ContactsModel")
     let description = NSPersistentStoreDescription()
     //This prevents overwriting anything in Core Data and limits memory to that allocated to the test
     description.type = NSInMemoryStoreType
@@ -95,19 +57,14 @@ class HMUTests: XCTestCase {
       
       super.tearDown()
     }
-
-//    Dont feel like dealing with private issue here plus I already can tell that my API Initializes implicitly through other tests.
-//    func testInitializedAPI() {
-//      XCTAssertEqual(testManager?.persistentCont, mockContactStoreContainer)
-//    }
   
     func testAddContact() {
-      var temp = CNMutableContact()
+      let temp = CNMutableContact()
       temp.nickname = "Kacey"
       temp.familyName = "Fields"
       let Kacey = HCContact(contact: temp)
       
-      var temp2 = CNMutableContact()
+      let temp2 = CNMutableContact()
       temp2.nickname = "Joji"
       temp2.familyName = "Pink Guy"
       let Joji = HCContact(contact: temp2)
@@ -119,12 +76,29 @@ class HMUTests: XCTestCase {
     }
   
     func testContains() {
-      var temp = CNMutableContact()
+      let temp = CNMutableContact()
       temp.nickname = "Kacey"
       temp.familyName = "Fields"
       let Kacey = HCContact(contact: temp)
       
-      var temp2 = CNMutableContact()
+      let temp2 = CNMutableContact()
+      temp2.nickname = "Joji"
+      temp2.familyName = "Pink Guy"
+      let Joji = HCContact(contact: temp2)
+      
+      print(testManager!.addContact(contact: Kacey))
+      
+      XCTAssertTrue((testManager?.contains(contact: Kacey))!)
+      XCTAssertFalse((testManager?.contains(contact: Joji))!)
+    }
+  
+    func testRemove() {
+      let temp = CNMutableContact()
+      temp.nickname = "Kacey"
+      temp.familyName = "Fields"
+      let Kacey = HCContact(contact: temp)
+      
+      let temp2 = CNMutableContact()
       temp2.nickname = "Joji"
       temp2.familyName = "Pink Guy"
       let Joji = HCContact(contact: temp2)
@@ -132,8 +106,113 @@ class HMUTests: XCTestCase {
       print(testManager!.addContact(contact: Kacey))
       print(testManager!.addContact(contact: Joji))
       
-      XCTAssertTrue((testManager?.contains(contact: Joji))!)
+      XCTAssertEqual(testManager?.persistentContCount(), 2)
+      
+      print(testManager!.removeContact(contact: Joji))
+      
+      XCTAssertTrue((testManager?.contains(contact: Kacey))!)
+      XCTAssertFalse((testManager?.contains(contact: Joji))!)
     }
+  
+    func testLoad() {
+      let temp = CNMutableContact()
+      temp.nickname = "Kacey"
+      temp.familyName = "Fields"
+      let Kacey = HCContact(contact: temp)
+      
+      let temp2 = CNMutableContact()
+      temp2.nickname = "Joji"
+      temp2.familyName = "Pink Guy"
+      let Joji = HCContact(contact: temp2)
+      
+      print(testManager!.addContact(contact: Kacey))
+      print(testManager!.addContact(contact: Joji))
+      print(testManager!.loadContacts())
+      XCTAssertEqual(testManager?.getContactList().count, 2)
+      testManager!.clearContactList()
+      XCTAssertEqual(testManager?.getContactList().count, 0)
+      XCTAssertFalse((testManager?.contactListContains(contact: Joji))!)
+      XCTAssertEqual(testManager?.persistentContCount(), 2)
+      print(testManager!.loadContacts())
+      XCTAssertTrue(self.testManager!.contactListContains(contact: Joji))
+      XCTAssertTrue(self.testManager!.contactListContains(contact: Kacey))
+      XCTAssertEqual(testManager?.getContactList().count, 2)
+    }
+  
+  func testMakeNotifs() {
+    let temp2 = CNMutableContact()
+    temp2.nickname = "Joji"
+    temp2.familyName = "Pink Guy"
+    let Joji = HCContact(contact: temp2)
+    
+    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    testManager?.makeNotificationForContact(contact: Joji)
+    sleep(5)
+    UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+      for request in requests {
+        let result = request.content.userInfo[AnyHashable("NAME")] as! String
+        XCTAssertEqual(result, " Pink Guy")
+        return
+      }
+    }
+  }
+  
+  func testPullContact() {
+    let temp = CNMutableContact()
+    temp.nickname = "Kacey"
+    temp.familyName = "Fields"
+    let Kacey = HCContact(contact: temp)
+    
+    let temp2 = CNMutableContact()
+    temp2.nickname = "Joji"
+    temp2.familyName = "Pink Guy"
+    let Joji = HCContact(contact: temp2)
+    
+    testManager!.addContact(contact: Kacey)
+    testManager!.addContact(contact: Joji)
+    testManager!.loadContacts()
+    
+    testManager?.pullContact({ (success) in
+      XCTAssert(success, "All good")
+      sleep(5)
+      UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+        for request in requests {
+          let result = request.content.userInfo[AnyHashable("NAME")] as! String
+          XCTAssertEqual(result, " Fields")
+        }
+      }
+    })
+    sleep(5)
+    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    sleep(5)
+    testManager?.pullContact({ (success) in
+      XCTAssert(success, "All good")
+      sleep(5)
+      UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+        print(requests)
+        for request in requests {
+          let result = request.content.userInfo[AnyHashable("NAME")] as! String
+          XCTAssertEqual(result, " Pink Guy")
+          return
+        }
+      }
+    })
+    sleep(5)
+    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    sleep(5)
+    testManager?.pullContact({ (success) in
+      XCTAssert(success, "All good")
+      sleep(5)
+      UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+        for request in requests {
+          let result = request.content.userInfo[AnyHashable("NAME")] as! String
+          XCTAssertEqual(result, " Fields")
+        }
+      }
+    })
+  }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

@@ -73,6 +73,7 @@ class LoginViewController: UIViewController {
   //MARK: - controller
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     logoView.layer.masksToBounds = false
     logoView.layer.cornerRadius = logoView.frame.size.height / 2
     logoView.clipsToBounds = true
@@ -86,6 +87,7 @@ class LoginViewController: UIViewController {
     if(Auth.auth().currentUser != nil) {
       self.performSegue(withIdentifier: "toDash", sender: nil)
     }
+    view.accessibilityIdentifier = "logo"
   }
 
   override func didReceiveMemoryWarning() {
@@ -191,7 +193,20 @@ class LoginViewController: UIViewController {
 
   }
 
-
+  //MARK: - Social Media Buttons
+  
+  @IBAction func facebookSignIn(_ sender: Any) {
+    print("Facebook")
+  }
+  
+  @IBAction func linkedInSignIn(_ sender: Any) {
+    print("LinkedIn")
+  }
+  
+  @IBAction func twitterSignIn(_ sender: Any) {
+    print("Twitter")
+  }
+  
   //MARK: - keyboard
   @objc func keyboarFrameChange(notification: NSNotification) {
 
@@ -274,7 +289,7 @@ extension LoginViewController: AwesomeContactPickerProtocol {
             do {
               for result in contacts! {
                 let contact = try self.contactStore.unifiedContact(withIdentifier: result, keysToFetch: keys)
-                ContactList.contactList.append(HCContact(contact: contact))
+//                ContactList.contactList.append(HCContact(contact: contact))
               }
             } catch {
               print("unable to fetch contacts")
@@ -288,4 +303,3 @@ extension LoginViewController: AwesomeContactPickerProtocol {
     }
   }
 }
-

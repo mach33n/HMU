@@ -45,12 +45,12 @@ class HMUResponseNotificationDelegate: NSObject,
         break
 
       case "DELETE_ACTION":
-        //Add confirmation step
-        ContactList.deleteContact(number: "\(String(describing: phoneNumber))") { (load) in
-          if load {
-            //Successful deletion
-          }
-        }
+//        //Add confirmation step
+//        ContactList.deleteContact(number: "\(String(describing: phoneNumber))") { (load) in
+//          if load {
+//            //Successful deletion
+//          }
+//        }
         break
 
       default:

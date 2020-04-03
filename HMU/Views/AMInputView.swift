@@ -44,8 +44,6 @@ import UIKit
     }
   }
 
-
-
   //MARK: - constraints
   @IBOutlet weak var backViewHeightExpandConstraint: NSLayoutConstraint!
   @IBOutlet weak var labelViewRightExpandConstraint: NSLayoutConstraint!
@@ -65,8 +63,6 @@ import UIKit
     setup()
   }
 
-
-
   private func setup() {
 
     loadNib()
@@ -82,8 +78,7 @@ import UIKit
 
     ])
 
-
-
+    textFieldView.accessibilityIdentifier = "logInInput"
     textFieldView.tintColor = UIColor.white
     textFieldView.delegate = self
     textFieldView.returnKeyType = .done
@@ -91,12 +86,10 @@ import UIKit
     backgroundColor = UIColor.clear
   }
 
-
   private func loadNib() {
     let bundle = Bundle(for: AMInputView.classForCoder())
     bundle.loadNibNamed("AMInputView", owner: self, options: nil)
   }
-
 
   //MARK: - textfield delegate
   func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -118,8 +111,6 @@ import UIKit
     self.endEditing(true)
     return true
   }
-
-
 
   //MARK: - change view
   private func setViewExpandMode(expand: Bool) {
@@ -144,6 +135,4 @@ import UIKit
       }
     }
   }
-
-
 }
