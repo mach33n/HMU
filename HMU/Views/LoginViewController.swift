@@ -73,7 +73,7 @@ class LoginViewController: UIViewController {
   //MARK: - controller
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     logoView.layer.masksToBounds = false
     logoView.layer.cornerRadius = logoView.frame.size.height / 2
     logoView.clipsToBounds = true
@@ -194,19 +194,19 @@ class LoginViewController: UIViewController {
   }
 
   //MARK: - Social Media Buttons
-  
+
   @IBAction func facebookSignIn(_ sender: Any) {
     print("Facebook")
   }
-  
+
   @IBAction func linkedInSignIn(_ sender: Any) {
     print("LinkedIn")
   }
-  
+
   @IBAction func twitterSignIn(_ sender: Any) {
     print("Twitter")
   }
-  
+
   //MARK: - keyboard
   @objc func keyboarFrameChange(notification: NSNotification) {
 
@@ -288,7 +288,7 @@ extension LoginViewController: AwesomeContactPickerProtocol {
             let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor]
             do {
               for result in contacts! {
-                let contact = try self.contactStore.unifiedContact(withIdentifier: result, keysToFetch: keys)
+                _ = try self.contactStore.unifiedContact(withIdentifier: result, keysToFetch: keys)
 //                ContactList.contactList.append(HCContact(contact: contact))
               }
             } catch {

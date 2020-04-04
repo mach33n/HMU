@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     FirebaseApp.configure()
     contactAPI.shared.configureNotification()
-   UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+    UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
 
     // Override point for customization after application launch.
     UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 0 / 255, blue: 205 / 255, alpha: 1)

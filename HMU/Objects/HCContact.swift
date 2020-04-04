@@ -11,23 +11,23 @@ import UIKit
 import Contacts
 
 class HCContact: NSObject, NSCoding {
-  
+
   func encode(with coder: NSCoder) {
     coder.encode(contact, forKey: "contactRoot")
   }
-  
+
   required init?(coder: NSCoder) {
     self.contact = coder.decodeObject(forKey: "contactRoot") as! CNContact
   }
-  
+
   private let contact: CNContact
-  
+
   var contactImage: UIImage?
-  
+
   var name: String {
     return contact.givenName + " " + contact.familyName
   }
-  
+
   // the following two scopes use two things called computer properties to provide a proxy to the CNContact istance that is stored in this class.
   var givenName: String {
     return contact.givenName
@@ -41,7 +41,7 @@ class HCContact: NSObject, NSCoding {
     self.contact = contact
     super.init()
   }
-  
+
   /* This method performs the decoding of the image data. It makes sense that the stored contact has image data
        available and it checks whether the contact image isn't set yet. If this is the case, the image data is decoded and
        assigned to the contactImage. The next time this method is called nothing will happen because contactImage,
@@ -79,7 +79,7 @@ class HCContact: NSObject, NSCoding {
   var identifier: String {
     return contact.identifier
   }
-  
+
   func isEqual(object: HCContact?) -> Bool {
     return identifier == object?.identifier
   }

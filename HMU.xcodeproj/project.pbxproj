@@ -21,12 +21,9 @@
 		F284498C238E084B00A38D88 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284498B238E084B00A38D88 /* NotificationViewController.swift */; };
 		F284498F238E084B00A38D88 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F284498D238E084B00A38D88 /* MainInterface.storyboard */; };
 		F2844993238E084B00A38D88 /* Content.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F2844985238E084B00A38D88 /* Content.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F28923AB23B86587008F936A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F28923AA23B86586008F936A /* Assets.xcassets */; };
 		F28923AE23B88A97008F936A /* HCContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28923AD23B88A97008F936A /* HCContact.swift */; };
 		F29415E02423C3F3004E08FB /* TransformableContactContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29415DF2423C3F3004E08FB /* TransformableContactContainer.swift */; };
 		F294A0942402F83D006F7F50 /* contactAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294A0932402F83D006F7F50 /* contactAPI.swift */; };
-		F2A3984523B1C66B00B5BCBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2A3984423B1C66B00B5BCBA /* Images.xcassets */; };
-		F2B4240824062AE600336925 /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2B4240124062AE500336925 /* AMInputView.xib */; };
 		F2B4240924062AE600336925 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240224062AE500336925 /* ContactDetailViewController.swift */; };
 		F2B4240A24062AE600336925 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240324062AE500336925 /* DashViewController.swift */; };
 		F2B4240B24062AE600336925 /* ContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240424062AE600336925 /* ContactCollectionViewCell.swift */; };
@@ -35,11 +32,8 @@
 		F2B4240E24062AE600336925 /* ContactsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240724062AE600336925 /* ContactsCollectionViewLayout.swift */; };
 		F2B5A468236504E4003103B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A467236504E4003103B4 /* AppDelegate.swift */; };
 		F2B5A46A236504E4003103B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A469236504E4003103B4 /* SceneDelegate.swift */; };
-		F2B5A46F236504E4003103B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B5A46D236504E4003103B4 /* Main.storyboard */; };
-		F2B5A474236504F1003103B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B5A472236504F1003103B4 /* LaunchScreen.storyboard */; };
 		F2B5A47F236504F1003103B4 /* HMUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A47E236504F1003103B4 /* HMUTests.swift */; };
 		F2B5A48A236504F1003103B4 /* HMUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A489236504F1003103B4 /* HMUUITests.swift */; };
-		F2B5A49A23650624003103B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2B5A49923650624003103B4 /* GoogleService-Info.plist */; };
 		F2B5A49C23651815003103B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A49B23651815003103B4 /* User.swift */; };
 		F2FF163A24266C2B004421C3 /* NotificationAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF163924266C2B004421C3 /* NotificationAcceptViewController.swift */; };
 		FA5030BE5B203903EE49450D /* Pods_Content.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AC905895E1C82151C0867C /* Pods_Content.framework */; };
@@ -507,12 +501,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2B5A474236504F1003103B4 /* LaunchScreen.storyboard in Resources */,
-				F2A3984523B1C66B00B5BCBA /* Images.xcassets in Resources */,
-				F2B5A49A23650624003103B4 /* GoogleService-Info.plist in Resources */,
-				F28923AB23B86587008F936A /* Assets.xcassets in Resources */,
-				F2B5A46F236504E4003103B4 /* Main.storyboard in Resources */,
-				F2B4240824062AE600336925 /* AMInputView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

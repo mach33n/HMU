@@ -11,31 +11,31 @@ import CoreData
 import UIKit
 
 class contactAPI {
-  
+
   //Attempted Singelton that might get changed to dependency injection
-  static let shared : contactAPI = {
+  static let shared: contactAPI = {
     //Enables future customizablitity of code
     return contactAPI()
   }()
-  
+
   private var persistentCont: NSPersistentContainer!
-  
+
   //Delegate to handle notification responses
   let notificationDelegate = HMUResponseNotificationDelegate()
-  
+
   private var contactList: [HCContact] = []
   private var currIndex: Int = 0
-  
+
   private var phrases = ["Hit up ", "Say hi to ", "Keep talking to "]
-  
+
   private init() {
     persistentCont = self.persistentContainer
   }
-  
+
   init(container: NSPersistentContainer) {
     persistentCont = container
   }
-  
+
   // Add Contact Functionality
   func addContact(contact: HCContact) -> Bool {
     // Check if contact already exists in contactList
@@ -43,8 +43,8 @@ class contactAPI {
       //If not then create it and add it to my persistent container
       let entity = NSEntityDescription.entity(forEntityName: "TransformableContactContainer", in: persistentCont.viewContext)
       if let TransformableContactContainer = NSManagedObject(entity: entity!, insertInto: persistentCont.viewContext) as? TransformableContactContainer {
-            TransformableContactContainer.identifier = contact.identifier
-            TransformableContactContainer.transformableContact = contact
+        TransformableContactContainer.identifier = contact.identifier
+        TransformableContactContainer.transformableContact = contact
         self.saveContext()
         return true
       } else {
@@ -58,7 +58,7 @@ class contactAPI {
       return false
     }
   }
-  
+
   // Remove Contact Functionality
   func removeContact(contact: HCContact) -> Bool {
     //Check if contact existsa
@@ -85,43 +85,43 @@ class contactAPI {
     print("Poor argument input.")
     return false
   }
-  
+
   // Functionality to refresh ContactList2
   func loadContacts() -> Bool {
-      //Clear current contactList
-      self.contactList = []
-      // Request object
-      let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
-      request.returnsObjectsAsFaults = false
-      do {
-          let result = try persistentCont.viewContext.fetch(request)
-          for data in result {
-            if (!self.contactListContains(contact: data.transformableContact)) {
-                self.contactList.append(data.transformableContact)
-            }
-          }
-          return true
-      } catch {
-        print("Error saving to container: " + error.localizedDescription)
-        return false
+    //Clear current contactList
+    self.contactList = []
+    // Request object
+    let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
+    request.returnsObjectsAsFaults = false
+    do {
+      let result = try persistentCont.viewContext.fetch(request)
+      for data in result {
+        if (!self.contactListContains(contact: data.transformableContact)) {
+          self.contactList.append(data.transformableContact)
+        }
       }
+      return true
+    } catch {
+      print("Error saving to container: " + error.localizedDescription)
+      return false
+    }
   }
-  
-  func contains(contact: HCContact) -> Bool{
+
+  func contains(contact: HCContact) -> Bool {
     //Make request for count of a contact object based on its string identifier.
     let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
-    
+
     //Prepopulates our transformablecontactcontainer objects in core data to ensure that we predicate properly
     request.returnsObjectsAsFaults = false
     request.predicate = NSPredicate(format: "identifier = %@", contact.identifier)
-    
+
     //Return true or false based on whether or not the object count is greater than 0
     var contains = false
     print(try! persistentCont.viewContext.count(for: request) > 0)
     contains = try! persistentCont.viewContext.count(for: request) > 0 ? true : false
     return contains
   }
-  
+
   func makeNotificationForContact(contact: HCContact) {
     let center = UNUserNotificationCenter.current()
     center.getPendingNotificationRequests { (contacts) in
@@ -148,23 +148,23 @@ class contactAPI {
       center.add(request)
     }
   }
-  
+
   private func pullCurrIndex() {
     // Request object to be deleted
     let request = NSFetchRequest<ContactPullContainer>(entityName: "ContactPullContainer")
     request.returnsObjectsAsFaults = false
     do {
-        let result = try persistentCont.viewContext.fetch(request)
-        if(result.count == 0) {
-          createCurrIndex()
-        } else {
-          self.currIndex = Int(result[0].currIndex)
-        }
+      let result = try persistentCont.viewContext.fetch(request)
+      if(result.count == 0) {
+        createCurrIndex()
+      } else {
+        self.currIndex = Int(result[0].currIndex)
+      }
     } catch {
       print("Error saving to container: " + error.localizedDescription)
     }
   }
-  
+
   private func saveCurrIndex() -> Bool {
     // Request object to be deleted
     let request = NSFetchRequest<ContactPullContainer>(entityName: "ContactPullContainer")
@@ -182,7 +182,7 @@ class contactAPI {
       return false
     }
   }
-  
+
   private func createCurrIndex() {
     let entity = NSEntityDescription.entity(forEntityName: "ContactPullContainer", in: persistentCont.viewContext)
     if let TransformableContactContainer = NSManagedObject(entity: entity!, insertInto: persistentCont.viewContext) as? ContactPullContainer {
@@ -193,22 +193,22 @@ class contactAPI {
       print("Error making NSManaged object: \(Error.self)")
     }
   }
-  
+
   func pullContact(_ completion: @escaping (Bool) -> Void) -> Bool {
-      if(contactList.count == 0) {
-        completion(false)
-        return false
-      }
-      pullCurrIndex()
-      if (contactList.count <= currIndex) {
-        currIndex = 0
-      }
-      self.makeNotificationForContact(contact: contactList[currIndex])
-      currIndex += 1
-      completion(true)
-      return saveCurrIndex()
+    if(contactList.count == 0) {
+      completion(false)
+      return false
+    }
+    pullCurrIndex()
+    if (contactList.count <= currIndex) {
+      currIndex = 0
+    }
+    self.makeNotificationForContact(contact: contactList[currIndex])
+    currIndex += 1
+    completion(true)
+    return saveCurrIndex()
   }
-  
+
   // MARK: - Core Data stack
 
   private lazy var persistentContainer: NSPersistentContainer = {
@@ -237,7 +237,7 @@ class contactAPI {
     })
     return container
   }()
-  
+
   // MARK: - Core Data Saving support
 
   func saveContext () {
@@ -253,7 +253,7 @@ class contactAPI {
       }
     }
   }
-  
+
   // MARK: - Notification SetUp
   //Unfinished
   func configureNotification() {
@@ -272,14 +272,14 @@ class contactAPI {
           center.delegate = self.notificationDelegate
           self.setUpNotifActions()
         } else {
-          
+
         }
       }
     } else {
-      
+
     }
     UIApplication.shared.registerForRemoteNotifications()
-    
+
   }
 
   private func setUpNotifActions() {
@@ -303,9 +303,9 @@ class contactAPI {
     let notificationCenter = UNUserNotificationCenter.current()
     notificationCenter.setNotificationCategories([meetingInviteCategory])
   }
-  
+
   // MARK: - Testing Functions
-  
+
   func persistentContCount() -> Int {
     let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
     do {
@@ -316,7 +316,7 @@ class contactAPI {
       return 0
     }
   }
-  
+
   func persistentContCount(predicate: NSPredicate) -> Int {
     let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
     request.predicate = predicate
@@ -328,15 +328,15 @@ class contactAPI {
       return 0
     }
   }
-  
+
   func clearContactList() {
     self.contactList = []
   }
-  
+
   func contactListContains(contact: HCContact) -> Bool {
     return self.contactList.contains(contact)
   }
-  
+
   func getContactList() -> [HCContact] {
     return self.contactList
   }
