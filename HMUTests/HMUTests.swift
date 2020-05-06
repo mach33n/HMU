@@ -112,6 +112,9 @@ class HMUTests: XCTestCase {
 
     XCTAssertTrue((testManager?.contains(contact: Kacey))!)
     XCTAssertFalse((testManager?.contains(contact: Joji))!)
+    
+    testManager?.loadContacts()
+    XCTAssertEqual(testManager?.getContactListCount(), 1)
   }
 
   func testLoad() {
@@ -212,6 +215,35 @@ class HMUTests: XCTestCase {
         }
       }
     })
+  }
+  
+  func testMergeContacts() {
+//    let temp = CNMutableContact()
+//    temp.nickname = "Kacey"
+//    temp.familyName = "Fields"
+//    temp.phoneNumbers.append(CNLabeledValue<CNPhoneNumber>(label: "Jim", value: CNPhoneNumber(stringValue: "404-555-4444")))
+//    let Kacey = HCContact(contact: temp)
+//
+//    let temp2 = CNMutableContact()
+//    temp2.nickname = "Joji"
+//    temp2.familyName = "Pink Guy"
+//    temp2.phoneNumbers.append(CNLabeledValue<CNPhoneNumber>(label: "Bill", value: CNPhoneNumber(stringValue: "404-660-4444")))
+//    let Joji = HCContact(contact: temp2)
+//
+//    testManager!.addContact(contact: Kacey)
+//    testManager!.addContact(contact: Joji)
+//    
+//    let temp3 = testManager!.mergeContacts(contactA: Kacey, contactB: Joji)
+//    testManager!.addContact(contact: temp3)
+//
+//    testManager?.removeContact(contact: Kacey)
+//    testManager?.removeContact(contact: Joji)
+//    
+//    XCTAssertEqual(testManager?.persistentContCount(), 1)
+//    testManager?.loadContacts()
+//    print(testManager?.getContactList()[0].phoneNumber)
+//    XCTAssertFalse((testManager?.contains(contact: Kacey))!)
+//    XCTAssertFalse((testManager?.contains(contact: Joji))!)
   }
 
   func testPerformanceExample() {

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ContactPullContainer" representedClassName="ContactPullContainer" syncable="YES" codeGenerationType="class">
         <attribute name="currIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="TransformableContactContainer" representedClassName=".TransformableContactContainer" syncable="YES">
         <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="transformableContact" attributeType="Transformable"/>
     </entity>
     <elements>
-        <element name="TransformableContactContainer" positionX="1071" positionY="1989" width="128" height="73"/>
         <element name="ContactPullContainer" positionX="1071" positionY="2007" width="128" height="58"/>
+        <element name="TransformableContactContainer" positionX="1071" positionY="1989" width="128" height="88"/>
     </elements>
 </model>

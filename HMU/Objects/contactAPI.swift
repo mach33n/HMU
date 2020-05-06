@@ -9,6 +9,10 @@
 import Foundation
 import CoreData
 import UIKit
+import Messages
+import MessageUI
+import Contacts
+import ContactsUI
 
 class contactAPI {
 
@@ -17,11 +21,15 @@ class contactAPI {
     //Enables future customizablitity of code
     return contactAPI()
   }()
+  
+  var homeVC: HomeSlideViewController?
 
   private var persistentCont: NSPersistentContainer!
 
   //Delegate to handle notification responses
   let notificationDelegate = HMUResponseNotificationDelegate()
+  
+  let contactStore = CNContactStore()
 
   private var contactList: [HCContact] = []
   private var currIndex: Int = 0
@@ -36,6 +44,7 @@ class contactAPI {
     persistentCont = container
   }
 
+  // MARK: - Contact Functionality
   // Add Contact Functionality
   func addContact(contact: HCContact) -> Bool {
     // Check if contact already exists in contactList
@@ -45,6 +54,7 @@ class contactAPI {
       if let TransformableContactContainer = NSManagedObject(entity: entity!, insertInto: persistentCont.viewContext) as? TransformableContactContainer {
         TransformableContactContainer.identifier = contact.identifier
         TransformableContactContainer.transformableContact = contact
+        TransformableContactContainer.isFavorite = contact.isFavorite!
         self.saveContext()
         return true
       } else {
@@ -55,6 +65,22 @@ class contactAPI {
     } else {
       //Ignore if contact already exists in list
       print("Contact \(contact.familyName) already exists in container")
+      return false
+    }
+  }
+  
+  func remove(identifier: String) -> Bool {
+    if let result = self.contactList.first(where: {$0.identifier == identifier}) {
+      if (removeContact(contact: result)){
+        contactAPI.shared.loadContacts()
+        contactAPI.shared.homeVC?.collectionView.reloadData()
+        return true
+      } else {
+        print("Unable to remove contact.")
+        return false
+      }
+    } else {
+      print("Unable to remove contact.")
       return false
     }
   }
@@ -92,12 +118,50 @@ class contactAPI {
     self.contactList = []
     // Request object
     let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
-    request.returnsObjectsAsFaults = false
+    //request.returnsObjectsAsFaults = false
     do {
       let result = try persistentCont.viewContext.fetch(request)
       for data in result {
         if (!self.contactListContains(contact: data.transformableContact)) {
-          self.contactList.append(data.transformableContact)
+          if let temp = data.transformableContact as? HCContact {
+            temp.isFavorite = data.isFavorite
+            self.contactList.append(temp)
+          }
+        }
+      }
+      
+      // Check for updates in contacts from Core Data with contact in existing CNContactStore
+      let keys = [
+      CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+           CNContactEmailAddressesKey,
+           CNContactPhoneNumbersKey,
+           CNContactGivenNameKey,
+           CNContactFamilyNameKey,
+           CNContactPostalAddressesKey,
+           CNContactImageDataAvailableKey,
+           CNContactImageDataKey,
+           CNContactNicknameKey] as [Any]
+      
+      for contact in contactList {
+        do {
+          let check = try self.contactStore.unifiedContact(withIdentifier: contact.identifier, keysToFetch: keys as! [CNKeyDescriptor])
+          contact.updates(object: check) { (success) in
+            if(success) {
+              //If not then create it and add it to my persistent container
+              let entity = NSEntityDescription.entity(forEntityName: "TransformableContactContainer", in: persistentCont.viewContext)
+              if let TransformableContactContainer = NSManagedObject(entity: entity!, insertInto: persistentCont.viewContext) as? TransformableContactContainer {
+                TransformableContactContainer.identifier = contact.identifier
+                TransformableContactContainer.transformableContact = contact
+                self.saveContext()
+              } else {
+                //No changes were needed from contact so no need to re-save
+              }
+            } else {
+              print("Error with update")
+            }
+          }
+        } catch {
+          print("unable to fetch contacts")
         }
       }
       return true
@@ -106,7 +170,8 @@ class contactAPI {
       return false
     }
   }
-
+  
+  // Checks if contact object exists in core data
   func contains(contact: HCContact) -> Bool {
     //Make request for count of a contact object based on its string identifier.
     let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
@@ -121,7 +186,63 @@ class contactAPI {
     contains = try! persistentCont.viewContext.count(for: request) > 0 ? true : false
     return contains
   }
+  
+  func save(contact: HCContact) -> Bool {
+    if (contains(contact: contact)) {
+      // Request object to be deleted
+      let request = NSFetchRequest<TransformableContactContainer>(entityName: "TransformableContactContainer")
+      // Use this to filter data Loading
+      // or Potentially make a new method with a predicate argument
+      request.predicate = NSPredicate(format: "identifier = %@", contact.identifier)
+      request.returnsObjectsAsFaults = false
+      do {
+        let result = try persistentCont.viewContext.fetch(request)
+        for data in result {
+          data.transformableContact = contact
+          data.isFavorite = contact.isFavorite!
+        }
+        self.saveContext()
+      } catch {
+        print("Issue trying to fetch request: " + error.localizedDescription)
+        return false
+      }
+    } else {
+      //If not then create it and add it to my persistent container
+      let entity = NSEntityDescription.entity(forEntityName: "TransformableContactContainer", in: persistentCont.viewContext)
+      if let TransformableContactContainer = NSManagedObject(entity: entity!, insertInto: persistentCont.viewContext) as? TransformableContactContainer {
+        TransformableContactContainer.identifier = contact.identifier
+        TransformableContactContainer.transformableContact = contact
+        TransformableContactContainer.isFavorite = contact.isFavorite!
+      } else {
+        print("Issue trying to create entity.")
+        return false
+      }
+      self.saveContext()
+    }
+    return true
+  }
+  
+  func toggleFavorite(identifier: String) -> Bool {
+    if let result = self.contactList.first(where: {$0.identifier == identifier}) {
+      result.toggleFavorite()
+      contactAPI.shared.save(contact: result)
+      return true
+    } else {
+      print("Unable to toggle contact.")
+       return false
+    }
+  }
+  
+  func pullInstagram(identifier: String) {
+    if let result = self.contactList.first(where: {$0.identifier == identifier}) {
+      
+    } else {
+      
+    }
+  }
 
+/**********************************************************************************/
+  //Revise Below
   func makeNotificationForContact(contact: HCContact) {
     let center = UNUserNotificationCenter.current()
     center.getPendingNotificationRequests { (contacts) in
@@ -208,7 +329,50 @@ class contactAPI {
     completion(true)
     return saveCurrIndex()
   }
-
+  
+/***************************************************************************************/
+  
+  func mergeContacts(contactA: String, contactB: String) -> HCContact {
+    var tempA: CNMutableContact?
+    var tempB: CNMutableContact?
+    var ret = CNMutableContact()
+    
+    let keys = [
+      CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+           CNContactEmailAddressesKey,
+           CNContactPhoneNumbersKey,
+           CNContactGivenNameKey,
+           CNContactFamilyNameKey,
+           CNContactPostalAddressesKey,
+           CNContactImageDataAvailableKey,
+           CNContactImageDataKey,
+           CNContactNicknameKey] as [Any]
+    do {
+        var contact = try contactAPI.shared.contactStore.unifiedContact(withIdentifier: contactA, keysToFetch: keys as! [CNKeyDescriptor])
+      tempA = contact.mutableCopy() as? CNMutableContact
+        contact = try contactAPI.shared.contactStore.unifiedContact(withIdentifier: contactB, keysToFetch: keys as! [CNKeyDescriptor])
+      tempB = contact.mutableCopy() as? CNMutableContact
+    } catch {
+      print("unable to fetch contacts")
+    }
+    
+    ret.givenName = tempA!.givenName
+    ret.familyName = tempA!.familyName
+    ret.imageData = tempA!.imageData
+    ret.nickname = tempA!.nickname
+    
+    ret.emailAddresses += tempA!.emailAddresses
+    ret.emailAddresses += tempB!.emailAddresses
+    
+    ret.phoneNumbers += tempA!.phoneNumbers
+    ret.phoneNumbers += tempB!.phoneNumbers
+    
+    ret.postalAddresses += tempA!.postalAddresses
+    ret.postalAddresses += tempB!.postalAddresses
+    // Handle checking favourites
+    return HCContact(contact: ret)
+  }
+  
   // MARK: - Core Data stack
 
   private lazy var persistentContainer: NSPersistentContainer = {
@@ -303,6 +467,25 @@ class contactAPI {
     let notificationCenter = UNUserNotificationCenter.current()
     notificationCenter.setNotificationCategories([meetingInviteCategory])
   }
+  
+  func requestAccess(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+      switch CNContactStore.authorizationStatus(for: .contacts) {
+      case .authorized:
+          completionHandler(true)
+      case .denied:
+          print("Denied")
+      case .restricted, .notDetermined:
+          CNContactStore().requestAccess(for: .contacts) { granted, error in
+              if granted {
+                  completionHandler(true)
+              } else {
+                  DispatchQueue.main.async {
+                      print("Issue")
+                  }
+              }
+          }
+      }
+  }
 
   // MARK: - Testing Functions
 
@@ -339,5 +522,49 @@ class contactAPI {
 
   func getContactList() -> [HCContact] {
     return self.contactList
+  }
+  
+  func getContactListCount() -> Int {
+    return self.contactList.count
+  }
+  
+  //MARK: - App Interactions
+  func sendAMessage(number: String) {
+    // message view controller
+    let messageVC = MFMessageComposeViewController()
+    messageVC.body = "Whats up! How ya been?"
+    messageVC.recipients = [number]
+
+    // set the delegate
+    messageVC.messageComposeDelegate = UIApplication.shared.delegate as! MFMessageComposeViewControllerDelegate
+
+    // present the message view controller
+    if var topController = UIApplication.shared.keyWindow?.rootViewController {
+      while let presentedViewController = topController.presentedViewController {
+        topController = presentedViewController
+        //topController.isModalInPresentation = true
+        topController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        topController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+      }
+      topController.present(messageVC, animated: true, completion: nil)
+    }
+  }
+  
+  func facetime(phoneNumber:String) {
+    if let facetimeURL:NSURL = NSURL(string: "facetime://\(phoneNumber)") {
+      let application:UIApplication = UIApplication.shared
+      if (application.canOpenURL(facetimeURL as URL)) {
+        application.open(facetimeURL as URL, options: [:], completionHandler: nil)
+      }
+    }
+  }
+  
+  func call(phoneNumber:String) {
+    if let facetimeURL:NSURL = NSURL(string: "tel://\(phoneNumber)") {
+      let application:UIApplication = UIApplication.shared
+      if (application.canOpenURL(facetimeURL as URL)) {
+        application.open(facetimeURL as URL, options: [:], completionHandler: nil)
+      }
+    }
   }
 }

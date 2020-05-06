@@ -11,8 +11,21 @@
 		7D38516129DF2854C2178F06 /* Pods_HMU_HMUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD433258B9CFFB462AF3ADF3 /* Pods_HMU_HMUUITests.framework */; };
 		A478E7F33BE91E2C6D369048 /* Pods_Service.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A42E9D07957283ACD176AE /* Pods_Service.framework */; };
 		DE010120749C53E01CE04D39 /* Pods_HMUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1228B8F948ED6A1BCA8BCE /* Pods_HMUTests.framework */; };
-		F24E030423656CE1007848C8 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E030323656CE1007848C8 /* TimeInterval.swift */; };
+		F217DA9A244D39C700C4822C /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217DA99244D39C700C4822C /* LaunchViewController.swift */; };
+		F241D909244A323300EF82E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F241D908244A323200EF82E0 /* GoogleService-Info.plist */; };
+		F241D90A244A34F700EF82E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B5A46D236504E4003103B4 /* Main.storyboard */; };
+		F241D90C244A35A600EF82E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B5A472236504F1003103B4 /* LaunchScreen.storyboard */; };
+		F241D90D244A39C200EF82E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2A3984423B1C66B00B5BCBA /* Images.xcassets */; };
+		F241D90E244A39C500EF82E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F28923AA23B86586008F936A /* Assets.xcassets */; };
 		F264A6B82381A8D60043B809 /* ContactsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F264A6B62381A8D60043B809 /* ContactsModel.xcdatamodeld */; };
+		F281E50D244BDEF200A1C54C /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F281E50B244BDEF200A1C54C /* AMInputView.xib */; };
+		F281E50E244BDEF300A1C54C /* AMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F281E50C244BDEF200A1C54C /* AMInputView.swift */; };
+		F282266B244C26B800263385 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2822666244C26B700263385 /* CircleView.swift */; };
+		F282266C244C26B800263385 /* InfoBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2822667244C26B700263385 /* InfoBoard.swift */; };
+		F282266D244C26B800263385 /* CardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2822668244C26B800263385 /* CardsCollectionViewCell.swift */; };
+		F282266E244C26B800263385 /* HomeSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2822669244C26B800263385 /* HomeSlideViewController.swift */; };
+		F282266F244C26B800263385 /* ContactInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F282266A244C26B800263385 /* ContactInfoScreen.swift */; };
+		F2822671244C277700263385 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2822670244C277700263385 /* ViewModel.swift */; };
 		F2844970238D1FFE00A38D88 /* HMUResponseNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F284496F238D1FFE00A38D88 /* HMUResponseNotificationDelegate.swift */; };
 		F2844978238E083300A38D88 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2844977238E083300A38D88 /* NotificationService.swift */; };
 		F284497C238E083300A38D88 /* Service.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F2844975238E083200A38D88 /* Service.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -24,18 +37,13 @@
 		F28923AE23B88A97008F936A /* HCContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28923AD23B88A97008F936A /* HCContact.swift */; };
 		F29415E02423C3F3004E08FB /* TransformableContactContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29415DF2423C3F3004E08FB /* TransformableContactContainer.swift */; };
 		F294A0942402F83D006F7F50 /* contactAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294A0932402F83D006F7F50 /* contactAPI.swift */; };
-		F2B4240924062AE600336925 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240224062AE500336925 /* ContactDetailViewController.swift */; };
 		F2B4240A24062AE600336925 /* DashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240324062AE500336925 /* DashViewController.swift */; };
-		F2B4240B24062AE600336925 /* ContactCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240424062AE600336925 /* ContactCollectionViewCell.swift */; };
 		F2B4240C24062AE600336925 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240524062AE600336925 /* LoginViewController.swift */; };
-		F2B4240D24062AE600336925 /* AMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240624062AE600336925 /* AMInputView.swift */; };
-		F2B4240E24062AE600336925 /* ContactsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4240724062AE600336925 /* ContactsCollectionViewLayout.swift */; };
 		F2B5A468236504E4003103B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A467236504E4003103B4 /* AppDelegate.swift */; };
 		F2B5A46A236504E4003103B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A469236504E4003103B4 /* SceneDelegate.swift */; };
 		F2B5A47F236504F1003103B4 /* HMUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A47E236504F1003103B4 /* HMUTests.swift */; };
 		F2B5A48A236504F1003103B4 /* HMUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A489236504F1003103B4 /* HMUUITests.swift */; };
 		F2B5A49C23651815003103B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B5A49B23651815003103B4 /* User.swift */; };
-		F2FF163A24266C2B004421C3 /* NotificationAcceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FF163924266C2B004421C3 /* NotificationAcceptViewController.swift */; };
 		FA5030BE5B203903EE49450D /* Pods_Content.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67AC905895E1C82151C0867C /* Pods_Content.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,8 +108,18 @@
 		B17DFEB404071A3C5B479377 /* Pods-Service.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service.release.xcconfig"; path = "Target Support Files/Pods-Service/Pods-Service.release.xcconfig"; sourceTree = "<group>"; };
 		C397C92DA0420BFCD3CC5C8E /* Pods-HMUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMUTests.release.xcconfig"; path = "Target Support Files/Pods-HMUTests/Pods-HMUTests.release.xcconfig"; sourceTree = "<group>"; };
 		C9A9A2F3196D19F044CDC43E /* Pods-HMUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HMUTests.debug.xcconfig"; path = "Target Support Files/Pods-HMUTests/Pods-HMUTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F24E030323656CE1007848C8 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		F217DA99244D39C700C4822C /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		F241D908244A323200EF82E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F26188E32453EEAB000A0EE4 /* HMU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HMU.entitlements; path = ../HMU.entitlements; sourceTree = "<group>"; };
 		F264A6B72381A8D60043B809 /* ContactsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContactsModel.xcdatamodel; sourceTree = "<group>"; };
+		F281E50B244BDEF200A1C54C /* AMInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AMInputView.xib; path = HMU/AMInputView/AMInputView.xib; sourceTree = SOURCE_ROOT; };
+		F281E50C244BDEF200A1C54C /* AMInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AMInputView.swift; path = HMU/AMInputView/AMInputView.swift; sourceTree = SOURCE_ROOT; };
+		F2822666244C26B700263385 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleView.swift; path = HMU/Dash/CircleView.swift; sourceTree = SOURCE_ROOT; };
+		F2822667244C26B700263385 /* InfoBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoBoard.swift; path = HMU/Dash/InfoBoard.swift; sourceTree = SOURCE_ROOT; };
+		F2822668244C26B800263385 /* CardsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardsCollectionViewCell.swift; path = HMU/Dash/CardsCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		F2822669244C26B800263385 /* HomeSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeSlideViewController.swift; path = HMU/Dash/HomeSlideViewController.swift; sourceTree = SOURCE_ROOT; };
+		F282266A244C26B800263385 /* ContactInfoScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactInfoScreen.swift; path = HMU/Dash/ContactInfoScreen.swift; sourceTree = SOURCE_ROOT; };
+		F2822670244C277700263385 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = HMU/Dash/ViewModel.swift; sourceTree = SOURCE_ROOT; };
 		F284496F238D1FFE00A38D88 /* HMUResponseNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMUResponseNotificationDelegate.swift; sourceTree = "<group>"; };
 		F2844975238E083200A38D88 /* Service.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Service.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2844977238E083300A38D88 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -117,13 +135,8 @@
 		F29415DF2423C3F3004E08FB /* TransformableContactContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformableContactContainer.swift; sourceTree = "<group>"; };
 		F294A0932402F83D006F7F50 /* contactAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contactAPI.swift; sourceTree = "<group>"; };
 		F2A3984423B1C66B00B5BCBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F2B4240124062AE500336925 /* AMInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AMInputView.xib; path = HMU/Views/AMInputView.xib; sourceTree = "<group>"; };
-		F2B4240224062AE500336925 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactDetailViewController.swift; path = HMU/Views/ContactDetailViewController.swift; sourceTree = "<group>"; };
 		F2B4240324062AE500336925 /* DashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashViewController.swift; path = HMU/Views/DashViewController.swift; sourceTree = "<group>"; };
-		F2B4240424062AE600336925 /* ContactCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactCollectionViewCell.swift; path = HMU/Views/ContactCollectionViewCell.swift; sourceTree = "<group>"; };
 		F2B4240524062AE600336925 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = HMU/Views/LoginViewController.swift; sourceTree = "<group>"; };
-		F2B4240624062AE600336925 /* AMInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AMInputView.swift; path = HMU/Views/AMInputView.swift; sourceTree = "<group>"; };
-		F2B4240724062AE600336925 /* ContactsCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsCollectionViewLayout.swift; path = HMU/Views/ContactsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		F2B5A464236504E4003103B4 /* HMU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B5A467236504E4003103B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2B5A469236504E4003103B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,9 +149,7 @@
 		F2B5A485236504F1003103B4 /* HMUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HMUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B5A489236504F1003103B4 /* HMUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMUUITests.swift; sourceTree = "<group>"; };
 		F2B5A48B236504F1003103B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2B5A49923650624003103B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2B5A49B23651815003103B4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		F2FF163924266C2B004421C3 /* NotificationAcceptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationAcceptViewController.swift; path = HMU/Views/NotificationAcceptViewController.swift; sourceTree = "<group>"; };
 		FD433258B9CFFB462AF3ADF3 /* Pods_HMU_HMUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HMU_HMUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -219,6 +230,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F281E50A244BDEE500A1C54C /* AMInputView */ = {
+			isa = PBXGroup;
+			children = (
+				F281E50C244BDEF200A1C54C /* AMInputView.swift */,
+				F281E50B244BDEF200A1C54C /* AMInputView.xib */,
+			);
+			path = AMInputView;
+			sourceTree = "<group>";
+		};
+		F2822665244C26AC00263385 /* Dash */ = {
+			isa = PBXGroup;
+			children = (
+				F2822670244C277700263385 /* ViewModel.swift */,
+				F2822668244C26B800263385 /* CardsCollectionViewCell.swift */,
+				F2822666244C26B700263385 /* CircleView.swift */,
+				F282266A244C26B800263385 /* ContactInfoScreen.swift */,
+				F2822669244C26B800263385 /* HomeSlideViewController.swift */,
+				F2822667244C26B700263385 /* InfoBoard.swift */,
+			);
+			path = Dash;
+			sourceTree = "<group>";
+		};
 		F2844976238E083300A38D88 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,7 +278,6 @@
 				F2B5A49B23651815003103B4 /* User.swift */,
 				F284496F238D1FFE00A38D88 /* HMUResponseNotificationDelegate.swift */,
 				F29415DF2423C3F3004E08FB /* TransformableContactContainer.swift */,
-				F24E030323656CE1007848C8 /* TimeInterval.swift */,
 				F294A0932402F83D006F7F50 /* contactAPI.swift */,
 			);
 			path = Objects;
@@ -254,14 +286,10 @@
 		F2B4240024062AD800336925 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2B4240624062AE600336925 /* AMInputView.swift */,
-				F2B4240124062AE500336925 /* AMInputView.xib */,
-				F2B4240424062AE600336925 /* ContactCollectionViewCell.swift */,
-				F2B4240224062AE500336925 /* ContactDetailViewController.swift */,
-				F2B4240724062AE600336925 /* ContactsCollectionViewLayout.swift */,
+				F2822665244C26AC00263385 /* Dash */,
+				F281E50A244BDEE500A1C54C /* AMInputView */,
 				F2B4240324062AE500336925 /* DashViewController.swift */,
 				F2B4240524062AE600336925 /* LoginViewController.swift */,
-				F2FF163924266C2B004421C3 /* NotificationAcceptViewController.swift */,
 			);
 			name = Views;
 			path = ..;
@@ -303,8 +331,10 @@
 				F2B5A46D236504E4003103B4 /* Main.storyboard */,
 				F28923AA23B86586008F936A /* Assets.xcassets */,
 				F2A3984423B1C66B00B5BCBA /* Images.xcassets */,
+				F26188E32453EEAB000A0EE4 /* HMU.entitlements */,
 				F2B5A472236504F1003103B4 /* LaunchScreen.storyboard */,
-				F2B5A49923650624003103B4 /* GoogleService-Info.plist */,
+				F217DA99244D39C700C4822C /* LaunchViewController.swift */,
+				F241D908244A323200EF82E0 /* GoogleService-Info.plist */,
 				F2B5A475236504F1003103B4 /* Info.plist */,
 				F264A6B62381A8D60043B809 /* ContactsModel.xcdatamodeld */,
 			);
@@ -377,8 +407,8 @@
 				F2B5A461236504E4003103B4 /* Frameworks */,
 				F2B5A462236504E4003103B4 /* Resources */,
 				F2844980238E083300A38D88 /* Embed App Extensions */,
-				BA6BFE2EF211869DBF3FFD74 /* [CP] Embed Pods Frameworks */,
 				F28923AC23B87A5A008F936A /* ShellScript */,
+				9BCC870A7FDA76923DB4F78F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -418,7 +448,7 @@
 				F2B5A481236504F1003103B4 /* Sources */,
 				F2B5A482236504F1003103B4 /* Frameworks */,
 				F2B5A483236504F1003103B4 /* Resources */,
-				E86EBDA239B44A1D190833AE /* [CP] Embed Pods Frameworks */,
+				288D6DD7BC47D3229B2CF55B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -501,6 +531,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F241D90E244A39C500EF82E0 /* Assets.xcassets in Resources */,
+				F241D90C244A35A600EF82E0 /* LaunchScreen.storyboard in Resources */,
+				F241D909244A323300EF82E0 /* GoogleService-Info.plist in Resources */,
+				F241D90A244A34F700EF82E0 /* Main.storyboard in Resources */,
+				F241D90D244A39C200EF82E0 /* Images.xcassets in Resources */,
+				F281E50D244BDEF200A1C54C /* AMInputView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +557,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		288D6DD7BC47D3229B2CF55B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HMU-HMUUITests/Pods-HMU-HMUUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HMU-HMUUITests/Pods-HMU-HMUUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HMU-HMUUITests/Pods-HMU-HMUUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		441EA4A34C625459BD0E8B55 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -587,6 +640,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9BCC870A7FDA76923DB4F78F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HMU/Pods-HMU-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HMU/Pods-HMU-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HMU/Pods-HMU-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AFA2AFE4FF938396AC3BFEB9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -607,23 +677,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA6BFE2EF211869DBF3FFD74 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HMU/Pods-HMU-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HMU/Pods-HMU-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HMU/Pods-HMU-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BD90F002EB8653F3C8B6782B /* [CP] Check Pods Manifest.lock */ = {
@@ -648,23 +701,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E86EBDA239B44A1D190833AE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HMU-HMUUITests/Pods-HMU-HMUUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HMU-HMUUITests/Pods-HMU-HMUUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HMU-HMUUITests/Pods-HMU-HMUUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F28923AC23B87A5A008F936A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -680,8 +716,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -709,18 +744,20 @@
 				F2B4240C24062AE600336925 /* LoginViewController.swift in Sources */,
 				F28923AE23B88A97008F936A /* HCContact.swift in Sources */,
 				F294A0942402F83D006F7F50 /* contactAPI.swift in Sources */,
-				F2B4240D24062AE600336925 /* AMInputView.swift in Sources */,
-				F24E030423656CE1007848C8 /* TimeInterval.swift in Sources */,
-				F2B4240E24062AE600336925 /* ContactsCollectionViewLayout.swift in Sources */,
+				F282266E244C26B800263385 /* HomeSlideViewController.swift in Sources */,
+				F281E50E244BDEF300A1C54C /* AMInputView.swift in Sources */,
 				F2844970238D1FFE00A38D88 /* HMUResponseNotificationDelegate.swift in Sources */,
-				F2FF163A24266C2B004421C3 /* NotificationAcceptViewController.swift in Sources */,
 				F264A6B82381A8D60043B809 /* ContactsModel.xcdatamodeld in Sources */,
+				F217DA9A244D39C700C4822C /* LaunchViewController.swift in Sources */,
 				F2B5A468236504E4003103B4 /* AppDelegate.swift in Sources */,
 				F2B5A49C23651815003103B4 /* User.swift in Sources */,
-				F2B4240924062AE600336925 /* ContactDetailViewController.swift in Sources */,
+				F282266B244C26B800263385 /* CircleView.swift in Sources */,
+				F2822671244C277700263385 /* ViewModel.swift in Sources */,
+				F282266D244C26B800263385 /* CardsCollectionViewCell.swift in Sources */,
 				F2B5A46A236504E4003103B4 /* SceneDelegate.swift in Sources */,
 				F2B4240A24062AE600336925 /* DashViewController.swift in Sources */,
-				F2B4240B24062AE600336925 /* ContactCollectionViewCell.swift in Sources */,
+				F282266F244C26B800263385 /* ContactInfoScreen.swift in Sources */,
+				F282266C244C26B800263385 /* InfoBoard.swift in Sources */,
 				F29415E02423C3F3004E08FB /* TransformableContactContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,10 +918,10 @@
 		F2B5A48C236504F1003103B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -914,7 +951,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -935,17 +972,17 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
 		F2B5A48D236504F1003103B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -975,7 +1012,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -990,7 +1027,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1006,14 +1043,12 @@
 				DEVELOPMENT_TEAM = A24WQ4F927;
 				INFOPLIST_FILE = HMU/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = Cam.HMU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1028,14 +1063,11 @@
 				DEVELOPMENT_TEAM = A24WQ4F927;
 				INFOPLIST_FILE = HMU/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Cam.HMU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1100,7 +1132,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Cam.HMUUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HMU;
 			};
@@ -1121,7 +1153,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Cam.HMUUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HMU;
 			};

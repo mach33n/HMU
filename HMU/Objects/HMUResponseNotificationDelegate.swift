@@ -13,7 +13,7 @@ import MessageUI
 import Messages
 
 class HMUResponseNotificationDelegate: NSObject,
-  UNUserNotificationCenterDelegate, MFMessageComposeViewControllerDelegate {
+  UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
@@ -36,7 +36,7 @@ class HMUResponseNotificationDelegate: NSObject,
           print("SMS services are not available")
         } else {
           // call method
-          sendAMessage(number: "\(String(describing: phoneNumber))")
+          contactAPI.shared.sendAMessage(number: "\(String(describing: phoneNumber))")
         }
         break
 
@@ -56,43 +56,7 @@ class HMUResponseNotificationDelegate: NSObject,
       default:
         break
       }
-
       // Always call the completion handler when done.
       completionHandler()
-    }
-
-    func sendAMessage(number: String) {
-      // message view controller
-      let messageVC = MFMessageComposeViewController()
-      messageVC.body = "Whats up! How ya been?"
-      messageVC.recipients = [number]
-
-      // set the delegate
-      messageVC.messageComposeDelegate = self
-
-      // present the message view controller
-      if var topController = UIApplication.shared.keyWindow?.rootViewController {
-        while let presentedViewController = topController.presentedViewController {
-          topController = presentedViewController
-          //topController.isModalInPresentation = true
-          topController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-          topController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        }
-        topController.present(messageVC, animated: true, completion: nil)
-      }
-    }
-
-    // delegate implementation
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-      switch result {
-      case .cancelled:
-        controller.presentingViewController?.dismiss(animated: true, completion: nil)
-      case .failed:
-        controller.presentingViewController?.dismiss(animated: true, completion: nil)
-      case .sent:
-        controller.presentingViewController?.dismiss(animated: true, completion: nil)
-      default:
-        break
-      }
     }
 }

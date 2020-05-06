@@ -148,5 +148,197 @@
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8947401-A9E3-4315-8919-0680D94BB7B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMU/Objects/contactAPI.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "removeContact(contact:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F1D0E583-DBE4-45B6-82B4-7E88584C58A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMU/Dash/InfoBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F1D0E583-DBE4-45B6-82B4-7E88584C58A1 - a2f9e95d55007a85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in HMU.InfoBoard.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "HMU"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cameronbennett/Desktop/HMU/HMU/Dash/InfoBoard.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "F1D0E583-DBE4-45B6-82B4-7E88584C58A1 - 89d1ff44d54bf733"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 () -&gt; () in HMU.InfoBoard.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "HMU"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cameronbennett/Desktop/HMU/HMU/Dash/InfoBoard.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E32C9BC8-02B4-428D-8F34-7FD54F5DA00A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMU/Dash/InfoBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
+            landmarkName = "contactPicker(_:didDismissWithType:contacts:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F291ABFE-A360-48D5-AF50-FA929310587E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMU/Dash/InfoBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "contactPicker(_:didDismissWithType:contacts:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F291ABFE-A360-48D5-AF50-FA929310587E - 8a57235d68514670"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HMU.InfoBoard.contactPicker(_: __C.UIViewController, didDismissWithType: AwesomeContactPicker.AwesomeContactPicker.DismissType, contacts: Swift.Optional&lt;Swift.Set&lt;Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "HMU"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cameronbennett/Desktop/HMU/HMU/Dash/InfoBoard.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "381"
+                  endingLineNumber = "381"
+                  offsetFromSymbolStart = "1574">
+               </Location>
+               <Location
+                  uuid = "F291ABFE-A360-48D5-AF50-FA929310587E - 8a57235d68514670"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HMU.InfoBoard.contactPicker(_: __C.UIViewController, didDismissWithType: AwesomeContactPicker.AwesomeContactPicker.DismissType, contacts: Swift.Optional&lt;Swift.Set&lt;Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "HMU"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cameronbennett/Desktop/HMU/HMU/Dash/InfoBoard.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "381"
+                  endingLineNumber = "381"
+                  offsetFromSymbolStart = "2722">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B7701B8-2827-42A4-8208-21BB1CE0CB15"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMU/Dash/InfoBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "contactPicker(_:didDismissWithType:contacts:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9B7701B8-2827-42A4-8208-21BB1CE0CB15 - 8a57235d68514670"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HMU.InfoBoard.contactPicker(_: __C.UIViewController, didDismissWithType: AwesomeContactPicker.AwesomeContactPicker.DismissType, contacts: Swift.Optional&lt;Swift.Set&lt;Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "HMU"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cameronbennett/Desktop/HMU/HMU/Dash/InfoBoard.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "379"
+                  endingLineNumber = "379"
+                  offsetFromSymbolStart = "466">
+               </Location>
+               <Location
+                  uuid = "9B7701B8-2827-42A4-8208-21BB1CE0CB15 - 8a57235d68514670"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HMU.InfoBoard.contactPicker(_: __C.UIViewController, didDismissWithType: AwesomeContactPicker.AwesomeContactPicker.DismissType, contacts: Swift.Optional&lt;Swift.Set&lt;Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "HMU"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cameronbennett/Desktop/HMU/HMU/Dash/InfoBoard.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "379"
+                  endingLineNumber = "379"
+                  offsetFromSymbolStart = "2712">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7960D2D8-EB19-49B3-A14A-B53DD9E05B9C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HMU/Dash/InfoBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
+            landmarkName = "contactPicker(_:didDismissWithType:contacts:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

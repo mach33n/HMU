@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
 
   let animationDuration = 0.25
   var mode: AMLoginSignupViewMode = .signup
-  let contactStore = CNContactStore()
 
   //MARK: - background image constraints
   @IBOutlet weak var backImageLeftConstraint: NSLayoutConstraint!
@@ -69,11 +68,10 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var signupPasswordConfirmInputView: AMInputView!
 
 
-
   //MARK: - controller
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     logoView.layer.masksToBounds = false
     logoView.layer.cornerRadius = logoView.frame.size.height / 2
     logoView.clipsToBounds = true
@@ -84,10 +82,17 @@ class LoginViewController: UIViewController {
     //add keyboard notification
     NotificationCenter.default.addObserver(self, selector: #selector(keyboarFrameChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 
-    if(Auth.auth().currentUser != nil) {
-      self.performSegue(withIdentifier: "toDash", sender: nil)
-    }
     view.accessibilityIdentifier = "logo"
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if (Auth.auth().currentUser != nil) {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+      let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeSlideViewController") as! HomeSlideViewController
+
+      self.present(initialViewController, animated: true, completion: nil)
+    }
   }
 
   override func didReceiveMemoryWarning() {
@@ -120,21 +125,11 @@ class LoginViewController: UIViewController {
       toggleViewMode(animated: true)
     } else {
       if (signupEmailInputView.textFieldView.text != "" && signupPasswordInputView.textFieldView.text != "" && signupPasswordInputView.textFieldView.text == signupPasswordConfirmInputView.textFieldView.text) {
-        Auth.auth().createUser(withEmail: signupEmailInputView.textFieldView.text! + "@gmail.com", password: signupPasswordInputView.textFieldView.text!) { authResult, error in
-          if((error) != nil) {
-            print(error!.localizedDescription)
-          } else {
-            Auth.auth().signIn(withEmail: self.signupEmailInputView.textFieldView.text!, password: self.signupPasswordInputView.textFieldView.text!) { (result, error) in
-              User.name = self.signupEmailInputView.textFieldView.text!
-              User.uid = Auth.auth().currentUser!.uid
-              AwesomeContactSettings.nameLabelTextColor = UIColor.white
-              AwesomeContactSettings.navBarBarTintColor = UIColor.white
-              AwesomeContactSettings.searchTextFieldTextColor = UIColor.white
-              AwesomeContactSettings.sectionIndexColor = UIColor.white
-              AwesomeContactPicker.shared.openContacts(with: self, delegate: self)
-            }
-          }
-        }
+        AwesomeContactSettings.nameLabelTextColor = UIColor.black
+        AwesomeContactSettings.navBarBarTintColor = UIColor.white
+        AwesomeContactSettings.searchTextFieldTextColor = UIColor.white
+        AwesomeContactSettings.sectionIndexColor = UIColor.white
+        AwesomeContactPicker.shared.openContacts(with: self, delegate: self)
       }
       //TODO: signup by this data
       NSLog("Email:\(String(describing: signupEmailInputView.textFieldView.text)) Password:\(String(describing: signupPasswordInputView.textFieldView.text)), PasswordConfirm:\(String(describing: signupPasswordConfirmInputView.textFieldView.text))")
@@ -210,10 +205,7 @@ class LoginViewController: UIViewController {
   //MARK: - keyboard
   @objc func keyboarFrameChange(notification: NSNotification) {
 
-    guard let userInfo = notification.userInfo as? [String: AnyObject] else {
-      //Handle error
-      return
-    }
+    let userInfo = notification.userInfo as! [String:AnyObject]
 
     // get top of keyboard in view
     guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
@@ -279,27 +271,61 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: AwesomeContactPickerProtocol {
-  func didDismiss(with type: AwesomeContactPicker.DismissType, contacts: Set<String>?) {
+  
+  func contactPicker(_ contactPicker: UIViewController, didSelectContactWithIdentifierKey identifierKey: String, completion: @escaping (Bool) -> ()) {
+    //Don't forget to implement
+    completion(true)
+  }
+  
+  func contactPicker(_ contactPicker: UIViewController, didDeselectContactWithIdentifierKey identifierKey: String, completion: @escaping (Bool) -> ()) {
+    //Don't forget to implement
+    completion(true)
+  }
+  
+  func contactPicker(_ contactPicker: UIViewController, didDismissWithType type: AwesomeContactPicker.DismissType, contacts: Set<String>?) {
+    if (contacts?.count == 0) {
+      let alert = UIAlertController(title: "You didn't add any contacts!", message: "Please sign up when you have contacts you would like to add.", preferredStyle: .actionSheet)
+
+      self.present(alert, animated: true)
+      return
+    }
     switch type {
+    case .cancel: break
+      //Handle Cancel
     case .done:
-      contactStore.requestAccess(for: .contacts) { (granted, err) in
-        if(granted) {
-          DispatchQueue.global(qos: .background).async {
-            let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor]
-            do {
-              for result in contacts! {
-                _ = try self.contactStore.unifiedContact(withIdentifier: result, keysToFetch: keys)
-//                ContactList.contactList.append(HCContact(contact: contact))
-              }
-            } catch {
-              print("unable to fetch contacts")
-            }
-          }
+      let keys = [
+        CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+             CNContactEmailAddressesKey,
+             CNContactPhoneNumbersKey,
+             CNContactGivenNameKey,
+             CNContactFamilyNameKey,
+             CNContactPostalAddressesKey,
+             CNContactImageDataAvailableKey,
+             CNContactImageDataKey,
+             CNContactNicknameKey] as [Any]
+      do {
+        for result in contacts! {
+          let contact = try contactAPI.shared.contactStore.unifiedContact(withIdentifier: result, keysToFetch: keys as! [CNKeyDescriptor])
+          contactAPI.shared.addContact(contact: HCContact(contact: contact))
         }
+      } catch {
+        print("unable to fetch contacts")
       }
+      contactAPI.shared.loadContacts()
       self.performSegue(withIdentifier: "toDash", sender: nil)
     default:
       break
+    }
+    Auth.auth().createUser(withEmail: signupEmailInputView.textFieldView.text! + "@gmail.com", password: signupPasswordInputView.textFieldView.text!) { authResult, error in
+      print(authResult)
+      if((error) != nil) {
+        print(error!.localizedDescription)
+      } else {
+        Auth.auth().signIn(withEmail: self.signupEmailInputView.textFieldView.text!, password: self.signupPasswordInputView.textFieldView.text!) { (result, error) in
+            User.name = self.signupEmailInputView.textFieldView.text!
+            User.uid = Auth.auth().currentUser!.uid
+        }
+      }
     }
   }
 }

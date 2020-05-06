@@ -12,4 +12,5 @@ import CoreData
 class TransformableContactContainer: NSManagedObject {
   @NSManaged var identifier: String
   @NSManaged var transformableContact: HCContact
+  @NSManaged var isFavorite: Bool
 }

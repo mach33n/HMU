@@ -19,18 +19,18 @@ import UIKit
 
 
   //MARK: - IBInspectable properties
-  @IBInspectable var title: String = "" {
+  @IBInspectable var Title: String = "" {
     didSet {
       if labelView != nil {
-        labelView.text = title
+        labelView.text = Title
       }
     }
   }
 
-  @IBInspectable var keyboardType: Int = UIKeyboardType.default.rawValue {
+  @IBInspectable var KeyboardType: Int = UIKeyboardType.default.rawValue {
     didSet {
       if textFieldView != nil {
-        textFieldView.keyboardType = UIKeyboardType(rawValue: keyboardType)!
+        textFieldView.keyboardType = UIKeyboardType(rawValue: KeyboardType)!
       }
     }
   }
@@ -78,8 +78,7 @@ import UIKit
 
     ])
 
-    textFieldView.accessibilityIdentifier = "logInInput"
-    textFieldView.tintColor = UIColor.white
+    textFieldView.tintColor = UIColor.clear
     textFieldView.delegate = self
     textFieldView.returnKeyType = .done
     textFieldView.keyboardAppearance = .dark

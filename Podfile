@@ -20,9 +20,10 @@ target 'HMU' do
   pod 'AwesomeContactPicker'
   pod 'Firebase/Firestore'
   pod 'SwiftLint'
-
+  pod 'RoundAddButton', :git => 'https://github.com/baquer/RoundAddButton.git'
+  
   # Optionally, include the Swift extensions if you're using Swift.
-  pod 'FirebaseFirestoreSwift'
+  #pod 'FirebaseFirestoreSwift'
 
   target 'HMUTests' do
     inherit! :search_paths

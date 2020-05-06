@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D6P-Es-xfa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qqs-at-X94">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -85,65 +85,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJ2-Lm-mI1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="94"/>
+            <point key="canvasLocation" x="916" y="-672"/>
         </scene>
-        <!--test-->
-        <scene sceneID="2MO-9k-rNt">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wKf-Fh-RpB" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="Dash" title="test" id="Foo-bP-Z4N" customClass="Dashboard" customModule="HMU" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LEj-dI-Aye">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FO-5M-B57">
-                                <rect key="frame" x="20" y="422" width="374" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BgH-uD-RLc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="6FO-5M-B57" firstAttribute="centerX" secondItem="BgH-uD-RLc" secondAttribute="centerX" id="4pZ-J5-fb5"/>
-                            <constraint firstItem="6FO-5M-B57" firstAttribute="leading" secondItem="LEj-dI-Aye" secondAttribute="leadingMargin" id="68U-5H-C6v"/>
-                            <constraint firstItem="BgH-uD-RLc" firstAttribute="leading" secondItem="GNa-JB-sCz" secondAttribute="leading" id="68q-Ai-SPs"/>
-                            <constraint firstItem="6FO-5M-B57" firstAttribute="top" secondItem="GNa-JB-sCz" secondAttribute="top" constant="334" id="FX0-qg-4rF"/>
-                            <constraint firstItem="BgH-uD-RLc" firstAttribute="top" secondItem="GNa-JB-sCz" secondAttribute="top" id="YqM-mg-spL"/>
-                            <constraint firstItem="BgH-uD-RLc" firstAttribute="centerX" secondItem="LEj-dI-Aye" secondAttribute="centerX" id="rsW-av-l33"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="BgH-uD-RLc" secondAttribute="bottom" constant="-34" id="rua-jy-ozu"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="GNa-JB-sCz"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Welcome Back Buddy" id="xcC-T2-Wq3">
-                        <barButtonItem key="leftBarButtonItem" image="escape" catalog="system" style="plain" id="w8v-g6-MiG">
-                            <connections>
-                                <action selector="signOut:" destination="Foo-bP-Z4N" id="ssT-I2-aGQ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="q3v-af-Mda">
-                            <connections>
-                                <action selector="newContact:" destination="Foo-bP-Z4N" id="3Iv-Tl-geY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="contactTableView" destination="BgH-uD-RLc" id="hRn-zD-osm"/>
-                        <outlet property="messageLabel" destination="6FO-5M-B57" id="Ubb-jG-0op"/>
-                        <segue destination="D6P-Es-xfa" kind="presentation" identifier="toSignUp" modalPresentationStyle="overFullScreen" id="y7J-QK-K4h"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1838" y="94"/>
-        </scene>
-        <!--Login View Controller-->
+        <!--LoginVC-->
         <scene sceneID="ATf-Vv-fHc">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="D6P-Es-xfa" customClass="LoginViewController" customModule="HMU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="LoginVC" automaticallyAdjustsScrollViewInsets="NO" id="D6P-Es-xfa" userLabel="LoginVC" customClass="LoginViewController" customModule="HMU" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I1g-n3-arb"/>
                         <viewControllerLayoutGuide type="bottom" id="r6Z-sJ-Wg3"/>
@@ -152,7 +99,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImage" translatesAutoresizingMaskIntoConstraints="NO" id="wqJ-d5-boq" customClass="backImage">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImage" translatesAutoresizingMaskIntoConstraints="NO" id="wqJ-d5-boq">
                                 <rect key="frame" x="0.0" y="0.0" width="754" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivT-tP-3Z9">
@@ -164,7 +111,30 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYz-Bp-faE" userLabel="View - login contents">
                                                 <rect key="frame" x="20" y="142" width="324.5" height="247.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36R-Qf-Bc4" userLabel="Input View - email" customClass="AMInputView" customModule="HMU" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOa-Mq-idZ" userLabel="Input View - password" customClass="AMInputView" customModule="HMU" customModuleProvider="target">
+                                                        <rect key="frame" x="40" y="84" width="244.5" height="52"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="PassINPUT">
+                                                            <bool key="isElement" value="NO"/>
+                                                        </accessibility>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="52" id="OTE-Pu-1hu"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Title" value="Password"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="KeyboardType">
+                                                                <integer key="value" value="7"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-RV-KDk">
+                                                        <rect key="frame" x="100.5" y="181" width="123" height="58.5"/>
+                                                        <state key="normal" title="Forgot Password?">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36R-Qf-Bc4" userLabel="InputView" customClass="AMInputView" customModule="HMU" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="8" width="244.5" height="52"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="InputView">
@@ -179,28 +149,13 @@
                                                                 <integer key="value" value="7"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="keyboardType">
+                                                                <integer key="value" value="7"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Username"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOa-Mq-idZ" userLabel="Input View - password" customClass="AMInputView" customModule="HMU" customModuleProvider="target">
-                                                        <rect key="frame" x="40" y="84" width="244.5" height="52"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="PassINPUT">
-                                                            <bool key="isElement" value="NO"/>
-                                                        </accessibility>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="52" id="OTE-Pu-1hu"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="Title" value="Password"/>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yge-RV-KDk">
-                                                        <rect key="frame" x="100.5" y="181" width="123" height="58.5"/>
-                                                        <state key="normal" title="Forgot Password?">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -230,7 +185,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.46255093809999998" green="0.73149520160000003" blue="0.71844691039999997" alpha="0.9297945205479452" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="xbA-Wk-JJe" firstAttribute="top" secondItem="EYz-Bp-faE" secondAttribute="bottom" priority="400" constant="30" id="7Xo-2u-IqA"/>
                                             <constraint firstItem="xbA-Wk-JJe" firstAttribute="centerX" secondItem="4Ic-nX-SdN" secondAttribute="centerX" id="An7-tc-qHl"/>
@@ -247,6 +202,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uV-Kn-mLI" userLabel="Input View - email" customClass="AMInputView" customModule="HMU" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="8" width="244.5" height="52"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="SignInputView"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="JFe-X1-OXD"/>
                                                         </constraints>
@@ -256,28 +212,39 @@
                                                                 <integer key="value" value="7"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Username"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJz-h9-IPA" userLabel="Input View - password" customClass="AMInputView" customModule="HMU" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="84" width="244.5" height="52"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="SignPassINPUT"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="fkt-1J-C1e"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="Title" value="Password"/>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="KeyboardType">
+                                                                <integer key="value" value="7"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ct-wJ-mzH" userLabel="Input View - password" customClass="AMInputView" customModule="HMU" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="160" width="244.5" height="52"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="ConfirmPassINPUT"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="fLw-rR-nz1"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="Title" value="Confirm Password"/>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Confirm Password"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="KeyboardType">
+                                                                <integer key="value" value="7"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
@@ -477,7 +444,7 @@
                         <outlet property="signupPasswordInputView" destination="hJz-h9-IPA" id="2tp-QY-fcK"/>
                         <outlet property="signupView" destination="pUM-Tb-nwn" id="ydn-hM-ZNJ"/>
                         <outlet property="socialsView" destination="O04-LD-7gM" id="3Ck-rP-W3H"/>
-                        <segue destination="m64-VP-EMY" kind="presentation" identifier="toDash" modalPresentationStyle="fullScreen" id="sHU-Ci-yFf"/>
+                        <segue destination="oxc-SI-GTQ" kind="presentation" identifier="toDash" modalPresentationStyle="fullScreen" id="6dk-wT-vhc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EeP-Od-U2v" sceneMemberID="firstResponder"/>
@@ -558,11 +525,7 @@
                         <viewLayoutGuide key="safeArea" id="ZWe-i0-EfZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome Back Buddy" id="keF-1q-PWe">
-                        <barButtonItem key="leftBarButtonItem" image="escape" catalog="system" style="plain" id="4sL-pF-wu2">
-                            <connections>
-                                <action selector="signOut:" destination="Foo-bP-Z4N" id="B8k-qc-ysZ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="escape" catalog="system" style="plain" id="4sL-pF-wu2"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="6gs-tP-lEJ">
                             <connections>
                                 <action selector="newContact:" destination="vq5-VH-Ofx" id="QvU-xT-X6w"/>
@@ -576,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBu-lg-2EL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="-574"/>
+            <point key="canvasLocation" x="1890" y="-672"/>
         </scene>
         <!--Contact Detail View Controller-->
         <scene sceneID="bSA-Ej-1w1">
@@ -765,7 +728,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BcK-lV-uGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2800" y="-575"/>
+            <point key="canvasLocation" x="2851" y="-672"/>
+        </scene>
+        <!--HomeSlideViewController-->
+        <scene sceneID="JcE-HK-w0z">
+            <objects>
+                <viewController storyboardIdentifier="HomeSlideViewController" title="HomeSlideViewController" id="oxc-SI-GTQ" customClass="HomeSlideViewController" customModule="HMU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N21-yH-RFC"/>
+                        <viewControllerLayoutGuide type="bottom" id="RKb-Yz-cnu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zi9-0c-4HS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="N0x-6U-wCI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YQF-qp-Ye6" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.94202898550736" y="93.75"/>
+        </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="rIG-M2-vj7">
+            <objects>
+                <viewController id="Qqs-at-X94" customClass="LaunchViewController" customModule="HMU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jqk-PU-t96">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-ir-DBn">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="PiG-DZ-car"/>
+                                    <constraint firstAttribute="height" constant="200" id="Szz-gl-V3q"/>
+                                    <constraint firstAttribute="width" secondItem="rmr-ir-DBn" secondAttribute="height" multiplier="1:1" id="TXb-dn-2dU"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.060134813189999997" green="0.52211892599999998" blue="0.98477691410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rmr-ir-DBn" firstAttribute="leading" secondItem="zO1-kI-Pus" secondAttribute="leading" constant="107" id="4hJ-aC-pkP"/>
+                            <constraint firstItem="zO1-kI-Pus" firstAttribute="trailing" secondItem="rmr-ir-DBn" secondAttribute="trailing" constant="107" id="58B-1V-OAr"/>
+                            <constraint firstItem="rmr-ir-DBn" firstAttribute="top" secondItem="zO1-kI-Pus" secondAttribute="top" constant="304" id="AL3-8T-sIX"/>
+                            <constraint firstItem="zO1-kI-Pus" firstAttribute="bottom" secondItem="rmr-ir-DBn" secondAttribute="bottom" constant="314" id="Q8p-ED-cNl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zO1-kI-Pus"/>
+                    </view>
+                    <connections>
+                        <segue destination="D6P-Es-xfa" kind="presentation" identifier="toLogin" modalPresentationStyle="overCurrentContext" id="aqM-hV-8M4"/>
+                        <segue destination="oxc-SI-GTQ" kind="presentation" identifier="straightToDash" modalPresentationStyle="overCurrentContext" id="iJ6-Og-6og"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4V2-MF-r6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-867" y="94"/>
         </scene>
     </scenes>
     <resources>
@@ -777,6 +794,7 @@
         <image name="twitter" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sHU-Ci-yFf"/>
+        <segue reference="jCI-TL-q4O"/>
+        <segue reference="6dk-wT-vhc"/>
     </inferredMetricsTieBreakers>
 </document>

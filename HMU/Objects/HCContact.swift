@@ -20,9 +20,11 @@ class HCContact: NSObject, NSCoding {
     self.contact = coder.decodeObject(forKey: "contactRoot") as! CNContact
   }
 
-  private let contact: CNContact
+  private var contact: CNContact
 
   var contactImage: UIImage?
+  
+  var isFavorite: Bool?
 
   var name: String {
     return contact.givenName + " " + contact.familyName
@@ -38,7 +40,9 @@ class HCContact: NSObject, NSCoding {
   }
 
   init(contact: CNContact) {
-    self.contact = contact
+    let temp = contact.mutableCopy() as! CNMutableContact
+    self.contact = temp
+    self.isFavorite = false
     super.init()
   }
 
@@ -48,9 +52,24 @@ class HCContact: NSObject, NSCoding {
        won't be nil since the prefetching already did its job.
      */
   func fetchImageIfNeeded() {
-    if let imageData = contact.imageData, contactImage == nil {
-      contactImage = UIImage(data: imageData)
+    if contact.imageDataAvailable {
+      contactImage = UIImage(data: contact.imageData!)
     }
+  }
+  
+  func getContact() -> CNContact {
+    return self.contact
+  }
+  
+  func toggleFavorite() {
+    self.isFavorite!.toggle()
+  }
+  
+  // Not neccessary at the moment but could be useful.
+  func setNickname(nickname: String) {
+    var temp = contact.mutableCopy() as! CNMutableContact
+    temp.nickname = nickname
+    self.contact = temp
   }
 
   /* The ?? is called a ni coalescing operator. It used to return a retrieved value or a placeholder string
@@ -75,12 +94,78 @@ class HCContact: NSObject, NSCoding {
     let city = contact.postalAddresses.first?.value.city ?? "--"
     return "\(street)-\(city)"
   }
+  
+  var nickname: String {
+    return contact.nickname.isEmpty ? "Tap to add description!" : contact.nickname
+  }
 
   var identifier: String {
     return contact.identifier
   }
+  
+  var facebook: CNLabeledValue<CNSocialProfile> {
+    return contact.socialProfiles.first { (label) -> Bool in
+      label.label == CNSocialProfileServiceFacebook
+    }!
+  }
+  
+  var twitter: CNLabeledValue<CNSocialProfile> {
+    return contact.socialProfiles.first { (label) -> Bool in
+      label.label == CNSocialProfileServiceTwitter
+    }!
+  }
+  
+  var instagram: CNLabeledValue<CNSocialProfile> {
+    return contact.socialProfiles.first { (label) -> Bool in
+      label.label == "Instagram"
+    }!
+  }
 
   func isEqual(object: HCContact?) -> Bool {
     return identifier == object?.identifier
+  }
+  
+  func updates(object: CNContact?, completion: (Bool)->()) {
+    var changesMade = false
+    var temp = contact.mutableCopy() as! CNMutableContact
+    if (object!.imageDataAvailable || contact.imageData != object?.imageData) {
+        temp.imageData = object?.imageData
+        changesMade = true
+    }
+    if (contact.givenName != object?.givenName) {
+      temp.givenName = object!.givenName
+      changesMade = true
+    }
+    if (contact.familyName != object?.familyName) {
+      temp.familyName = object!.familyName
+      changesMade = true
+    }
+    if (contact.nickname != object?.nickname) {
+      temp.nickname = object!.nickname
+      changesMade = true
+    }
+    if (contact.emailAddresses != object?.emailAddresses) {
+      temp.emailAddresses = []
+      for emails in object!.emailAddresses {
+        temp.emailAddresses.append(emails)
+      }
+      changesMade = true
+    }
+    if (contact.phoneNumbers != object?.phoneNumbers) {
+      temp.phoneNumbers = []
+      for numbers in object!.phoneNumbers {
+        temp.phoneNumbers.append(numbers)
+      }
+      changesMade = true
+    }
+    if (contact.postalAddresses != object?.postalAddresses) {
+      temp.postalAddresses = []
+      for numbers in object!.postalAddresses {
+          temp.postalAddresses.append(numbers)
+      }
+      changesMade = true
+    }
+    contact = temp
+    completion(changesMade)
   }
 }
